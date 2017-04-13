@@ -5,8 +5,10 @@ include 'db_connection.php';
 $instance = dbConnection::getInstance();
 $mysqli = $instance->getConnection();
 
-$instance->setTableName("courses");
-$table_head = $instance->buildTableHead();
+$instance->setTableName("students");
+// var_dump($instance->buildTableBody()) ;
+$table_body = $instance->buildTable();
+//$table_head = $instance->buildTableHead();
 
 // $result = $mysqli->query("SHOW columns FROM university.students");
 // $result = $mysqli->query("SHOW tables IN university");
@@ -45,7 +47,7 @@ $table_head = $instance->buildTableHead();
  
  <table border="1">
     <?php
-        echo $table_head;
+        echo $table_body;
     ?>
  </table>
 

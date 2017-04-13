@@ -125,14 +125,48 @@ class dbConnection {
     }
   }
 
+  private function buildTableBody()
+  {
+    $query = $this->connection->query("SELECT * FROM " . $this->db ."." . $this->table_name);
+    
+    if (!$query){
+      return false;
+    }
+    else{
+      $rows = [];
+      while($row = $query->fetch_assoc()){
+        $rows []= $row;
+      }
+      
+      $table_body ="";
+      for ($i=0, $count = count($rows); $i < $count ; $i++) { 
+        $table_body .= "<tr> ";
+        foreach ($rows[$i] as $key => $value){
+          $table_body .= "<td> " . $value ." </td>";
+        }
+        $table_body .= " </tr>";     
+      }
+
+      return $table_body; 
+     
+    }
+
+
+  }
   public function buildTable()
   {
 
-    self::buildTableHead();
-    self::buildTableBody();
+    $table_head = $this->buildTableHead();
+    $table_body = $this->buildTableBody();
 
-    return false;
+    if (!($table_head && $table_body)){
+      return false;
+    }
 
+    else{
+      $table = $table_head . $table_body;
+      return $table;
+    }
   }
 
 }
