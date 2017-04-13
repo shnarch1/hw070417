@@ -142,7 +142,12 @@ class dbConnection {
       for ($i=0, $count = count($rows); $i < $count ; $i++) { 
         $table_body .= "<tr> ";
         foreach ($rows[$i] as $key => $value){
-          $table_body .= "<td> " . $value ." </td>";
+          if ($key === 'id'){
+            $table_body .= "<td><a href='http://localhost/070417/edit.php?subject=$this->table_name&id=$value'> " . $value ."</a></td>";
+          }
+          else{
+            $table_body .= "<td> " . $value ." </td>";
+          }          
         }
         $table_body .= " </tr>";     
       }
