@@ -42,6 +42,11 @@ $table = $db_instance->buildTable();
         header{
             text-align: center;
         }
+        footer{
+            position: fixed;
+            bottom: 0px;
+            left: 0px;
+        }
  	</style>
  </head>
  <body>
@@ -55,6 +60,10 @@ $table = $db_instance->buildTable();
         ?>
      </table>
  </main>
+ <footer>
+     <small>&copy; Avi Schnarch 2016-<?php echo date("Y");?>
+</small>
+ </footer>
 
  </body>
  </html>

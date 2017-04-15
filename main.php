@@ -1,13 +1,23 @@
 <?php 
 
-include 'db_connection.php';
+include 'student.php';
 
-$instance = dbConnection::getInstance();
-$mysqli = $instance->getConnection();
+$student = new Student(1, "moshe", "cohen", "123456789", "moshe@gmail.com");
+// echo '<pre>';
+// var_dump($student);
+// echo '</pre>';
+$student->update(1, 'test'); 
+echo '<pre>';
+var_dump($student);
+echo '</pre>';
 
-$instance->setTableName("students");
+
+// $instance = dbConnection::getInstance();
+// $mysqli = $instance->getConnection();
+
+// $instance->setTableName("students");
 // var_dump($instance->buildTableBody()) ;
-$table_body = $instance->buildTable();
+// $table_body = $instance->buildTable();
 //$table_head = $instance->buildTableHead();
 
 // $result = $mysqli->query("SHOW columns FROM university.students");
@@ -30,26 +40,3 @@ $table_body = $instance->buildTable();
 
 
 //	getColumns("students");
-
- ?>
-
- <!DOCTYPE html>
- <html>
- <head>
- 	<title>All Users</title>
- 	<style type="text/css">
- 		td{
- 			text-align: center;
- 		}
- 	</style>
- </head>
- <body>
- 
- <table border="1">
-    <?php
-        echo $table_body;
-    ?>
- </table>
-
- </body>
- </html>
