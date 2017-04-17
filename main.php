@@ -2,14 +2,18 @@
 
 include 'student.php';
 
-$student = new Student(1, "moshe", "cohen", "123456789", "moshe@gmail.com");
+$student = new Student();
 // echo '<pre>';
 // var_dump($student);
 // echo '</pre>';
-$student->update(1, 'test'); 
-echo '<pre>';
+//echo $student->last_name;
+// echo '<pre>';
+// var_dump($student);
+// echo '</pre>';
+//$student->update();
+$student->loadByID(1);
+echo $student->_id;
 var_dump($student);
-echo '</pre>';
 
 
 // $instance = dbConnection::getInstance();
